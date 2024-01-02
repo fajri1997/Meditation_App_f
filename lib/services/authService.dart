@@ -49,11 +49,17 @@ class AuthService {
         },
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
-      return response.statusCode ==
-          200; // Return true if the update was successful
+
+      // Consider both 200 (OK) and 204 (No Content) as success status codes.
+      return response.statusCode == 200 || response.statusCode == 204;
+    } on DioError catch (dioError) {
+      // If Dio throws an error, you can look at the status code and the response data here.
+      print(
+          'DioError: ${dioError.response?.statusCode} - ${dioError.response?.data}');
+      rethrow; // To pass the error back to the caller
     } catch (e) {
-      // Handle DioError or other specific errors
-      throw e.toString();
+      // Any other exception
+      rethrow; // This will pass the exception back to the caller
     }
   }
 

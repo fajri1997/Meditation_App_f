@@ -1,22 +1,11 @@
-//meditation_page.dart
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meditation_app/models/meditation.dart';
-// import 'package:meditation_app/models/tip.dart';
-
-// import 'package:go_router/go_router.dart';
-// import 'package:flutter/material.dart';
-// import 'package:go_router/go_router.dart';
-// import 'package:meditation_app/providrors/AuthProvider.dart';
-// import 'package:meditation_app/providrors/ThemeProvider.dart';
-// import 'package:provider/provider.dart';
+import 'package:meditation_app/services/client.dart'; // Import ApiClient
 
 class MeditationSessionsPage extends StatefulWidget {
-  final int meditationId;
-
-  const MeditationSessionsPage({Key? key, required this.meditationId})
-      : super(key: key);
+  const MeditationSessionsPage({Key? key})
+      : super(key: key); // Removed meditationId
 
   @override
   _MeditationSessionsPageState createState() => _MeditationSessionsPageState();
@@ -28,34 +17,25 @@ class _MeditationSessionsPageState extends State<MeditationSessionsPage> {
   @override
   void initState() {
     super.initState();
-    // Fetch meditation sessions when the widget is created
     fetchMeditationSessions();
   }
 
   Future<void> fetchMeditationSessions() async {
     try {
-      // Make the API request to fetch meditation sessions for the selected meditation
+      // Use ApiClient to make the GET request for all meditation sessions
+      final response = await ApiClient.get('/meditation');
 
-      final response = await http.get(
-        Uri.parse(
-            'https://coded-meditation.eapi.joincoded.com/meditation/${widget.meditationId}'),
-      );
-
-      // Parse the response data
       if (response.statusCode == 200) {
-        List<dynamic> data = json.decode(response.body);
+        List<dynamic> data = response.data;
         setState(() {
-          // Update the sessions list with the parsed data
           sessions = data
               .map((session) => MeditationSession.fromJson(session))
               .toList();
         });
       } else {
-        // Handle error if the request was not successful
         print('Failed to load meditation sessions: ${response.statusCode}');
       }
     } catch (e) {
-      // Handle any exceptions that might occur
       print('Error fetching meditation sessions: $e');
     }
   }
@@ -64,17 +44,22 @@ class _MeditationSessionsPageState extends State<MeditationSessionsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Meditation Sessions'),
+        title: const Text('Meditation Sessions'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            GoRouter.of(context).goNamed("homepage");
+          },
+        ),
       ),
       body: sessions.isEmpty
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
               itemCount: sessions.length,
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(sessions[index].title),
                   subtitle: Text('File: ${sessions[index].file}'),
-                  // You can add more details or actions here
                 );
               },
             ),

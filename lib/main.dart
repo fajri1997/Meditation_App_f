@@ -76,15 +76,26 @@ class MyApp extends StatelessWidget {
       builder: (context, state) => TipsPage(),
     ),
     GoRoute(
-      path: '/exercise',
-      name: 'exercise',
-      builder: (context, state) => ExercisePage(),
-    ),
-    GoRoute(
-      path: '/yoga_page',
-      name: 'yoga_page',
-      builder: (context, state) => YogaPage(),
-    ),
+    //   path: '/exercise',
+    //   name: 'exercise',
+    //   builder: (context, state) => ExercisePage(),
+    // ),
+    //   GoRoute(
+    //   path: '/video_page/:videoUrl', // Define a route for the video player
+    //   name: 'video_page',
+    //   builder: (context, state) {
+    //     final videoUrl =
+    //         state.params['videoUrl']!; // Extract videoUrl parameter
+    //     return VideoPlayerScreen(videoUrl: videoUrl);
+    //   },
+    // ),
+    // GoRoute(
+    //   path: '/yoga_page',
+    //   name: 'yoga_page',
+    //   builder: (context, state) =>
+    //       ExercisePage(), // Use ExercisePage as builder for both routes
+    // ),
+
     GoRoute(
       path: '/music_page',
       name: 'music_page',
@@ -93,9 +104,7 @@ class MyApp extends StatelessWidget {
     GoRoute(
       path: '/meditation_page',
       name: 'meditation_page',
-      builder: (context, state) => MeditationSessionsPage(
-        meditationId: 1, // Provide a constant value or get it dynamically
-      ),
+      builder: (context, state) => const MeditationSessionsPage(),
     )
   ]);
 }

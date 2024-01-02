@@ -53,7 +53,7 @@ class MyHomePage extends StatelessWidget {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
+            icon: Icon(Icons.fitness_center),
             label: 'Exercise',
           ),
           BottomNavigationBarItem(

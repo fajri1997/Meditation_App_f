@@ -1,31 +1,19 @@
-//profile_page.dart
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meditation_app/providrors/AuthProvider.dart';
 import 'package:meditation_app/providrors/ThemeProvider.dart';
 import 'package:provider/provider.dart';
-// import 'dart:convert';
-// import 'package:flutter/material.dart';
-// import 'package:go_router/go_router.dart';
-// import 'package:http/http.dart' as http;
-// import 'package:meditation_app/models/tip.dart';
-// import 'package:meditation_app/providrors/AuthProvider.dart';
-// import 'package:provider/provider.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Access the AuthProvider to get user data and logout functionality
-    final authProvider = context.read<AuthProvider>();
-    final themeProvider =
-        Provider.of<ThemeProvider>(context, listen: false); // Add themeProvider
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    final themeProvider = Provider.of<ThemeProvider>(context);
     final String username = authProvider.getUserUsername();
-    final String defaultImageUrl =
-        'https://via.placeholder.com/150'; // Replace with your actual default image URL if you have one
+    final String defaultImageUrl = 'https://via.placeholder.com/150';
 
-    // Controllers for text fields
     final TextEditingController _usernameController =
         TextEditingController(text: username);
     final TextEditingController _passwordController = TextEditingController();
@@ -42,7 +30,7 @@ class ProfilePage extends StatelessWidget {
         actions: [
           Switch(
             value: themeProvider.getTheme().brightness == Brightness.dark,
-            onChanged: (value) {
+            onChanged: (bool value) {
               themeProvider.setTheme(
                 value ? ThemeData.dark() : ThemeData.light(),
               );
@@ -77,62 +65,39 @@ class ProfilePage extends StatelessWidget {
                 obscureText: true,
               ),
               const SizedBox(height: 20),
-
               ElevatedButton(
                 onPressed: () async {
                   try {
                     bool success = await authProvider.updateProfile(
-                        _usernameController.text, _passwordController.text);
+                      _usernameController.text,
+                      _passwordController.text,
+                    );
                     if (success) {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text("Profile updated successfully."),
-                      ));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text("Profile updated successfully."),
+                        ),
+                      );
                     } else {
-                      // If the method returns false without throwing an exception
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text("Failed to update profile."),
-                      ));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text("Failed to update profile."),
+                        ),
+                      );
                     }
                   } catch (e) {
-                    // Log the error message to the console
                     print('An error occurred during profile update: $e');
-                    ScaffoldMessenger.of(context)
-                        .showSnackBar(SnackBar(content: Text("Error: $e")));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("Error: $e")),
+                    );
                   }
                 },
                 child: const Text('Update Profile'),
               ),
-
-              // ElevatedButton(
-              //   onPressed: () async {
-              //     // Call the updateProfile method with the new username and password
-              //     bool success = await authProvider.updateProfile(
-              //         _usernameController.text, _passwordController.text);
-              //     if (success) {
-              //       // Show a success message or handle the successful update
-              //       ScaffoldMessenger.of(context).showSnackBar(
-              //         const SnackBar(
-              //           content: Text("Profile updated successfully."),
-              //         ),
-              //       );
-              //     } else {
-              //       // Handle the error case
-              //       ScaffoldMessenger.of(context).showSnackBar(
-              //         const SnackBar(
-              //           content: Text("Failed to update profile."),
-              //         ),
-              //       );
-              //     }
-              //   },
-              //   child: const Text('Update Profile'),
-              // ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () async {
-                  // Call the logout method from the AuthProvider
                   await authProvider.logout();
-
-                  // Use GoRouter to navigate back to the /signin route
                   GoRouter.of(context).go('/signin');
                 },
                 child: const Text('Logout'),
@@ -140,6 +105,44 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.fitness_center),
+            label: 'Exercise',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        currentIndex:
+            0, // You can set the initial index based on your default page
+        onTap: (index) {
+          // Handle navigation based on the selected tab
+          switch (index) {
+            case 0:
+              // Navigate to Home page
+              context.go(
+                  '/homepage'); // Make sure '/home' is defined in your routes
+              break;
+            case 1:
+              // Navigate to Exercise page
+              context.go(
+                  '/exercise'); // Replace with the correct route for the Exercise page
+              break;
+            case 2:
+              // Navigate to Profile page
+              context.go(
+                  '/profile'); // Replace with the correct route for the Profile page
+              break;
+          }
+        },
       ),
     );
   }

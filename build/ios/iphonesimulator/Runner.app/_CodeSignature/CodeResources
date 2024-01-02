@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		RUZwq4T+ZnwRNTRK9totvmQ0cTE=
+		0yaSXRxsswqKISAflfbO7Z/XAK8=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		JbWZZqpBJsJ/VnE5zt5RXkGhYnU=
+		4hXAm41+jtvyvTOY7XmtrmfkKas=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		/WtE6F2KYjiN1uRmDp5VKAONIbg=
+		5OKKKR/KDoJL+GqS0CIRP7YxnWI=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/meditation.png</key>
 		<data>
@@ -98,7 +98,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		lpPXPI8sEAuCT7Mth+O0rCbHPHg=
+		RBjuXiaqjeDRlOglB5SyLHnx0Po=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -196,6 +196,18 @@
 		<data>
 		Ubat0LvE4LUgCwHeyl0Anx2vnzk=
 		</data>
+		<key>Frameworks/audioplayers_darwin.framework/Info.plist</key>
+		<data>
+		l0v6vqgVoL4cwFEfJrPUaX809hs=
+		</data>
+		<key>Frameworks/audioplayers_darwin.framework/_CodeSignature/CodeResources</key>
+		<data>
+		pOhA0e1lfBpRCvoqaRYhRRhm490=
+		</data>
+		<key>Frameworks/audioplayers_darwin.framework/audioplayers_darwin</key>
+		<data>
+		gqpb1VHCk7cEVyN5bR8qplLIP1k=
+		</data>
 		<key>Frameworks/image_picker_ios.framework/Info.plist</key>
 		<data>
 		tQhjIYFRNp6Ygh3lpk7seH6bDgU=
@@ -208,6 +220,18 @@
 		<data>
 		xWspcTLo5KG9whEPIHQlggOhEHw=
 		</data>
+		<key>Frameworks/path_provider_foundation.framework/Info.plist</key>
+		<data>
+		+qZ9WXDfb2Ef0HqNZX03W5antzk=
+		</data>
+		<key>Frameworks/path_provider_foundation.framework/_CodeSignature/CodeResources</key>
+		<data>
+		kRchMlj4jOiLaWihWj/pXzpHQho=
+		</data>
+		<key>Frameworks/path_provider_foundation.framework/path_provider_foundation</key>
+		<data>
+		0+A3rcElbbUQ8zHwjRuLshKYPbY=
+		</data>
 		<key>Frameworks/shared_preferences_foundation.framework/Info.plist</key>
 		<data>
 		ehHWh/x/HzpWhXEd0UdNOlRjjCM=
@@ -219,6 +243,18 @@
 		<key>Frameworks/shared_preferences_foundation.framework/shared_preferences_foundation</key>
 		<data>
 		SAC1XsWjTselbRczUu2Vyojkefs=
+		</data>
+		<key>Frameworks/video_player_avfoundation.framework/Info.plist</key>
+		<data>
+		X/AKklf2LPsLl4dck7vr/doWKQs=
+		</data>
+		<key>Frameworks/video_player_avfoundation.framework/_CodeSignature/CodeResources</key>
+		<data>
+		TLR2rU4HWy7GuIUqzslI+w068Ao=
+		</data>
+		<key>Frameworks/video_player_avfoundation.framework/video_player_avfoundation</key>
+		<data>
+		FGpIcxAAgMCMY2A5UNkoLYifWXg=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -305,7 +341,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			NNySz49y/uEvxHlD9oY+NFSBxAaiSOTGCn97+f8daeE=
+			MrNFbP2KQbLPJmXaQd5ehNUz1XLciGaXm/EoQJaUEOo=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -319,7 +355,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			2ljI9LtmR/nnVpm8MqUKK/QRgFL+AG7QFXXI3pRU6qQ=
+			pW0dnBElhvwyAWGJlsxPli6k41eA0PeFVo0ZCiGUTdM=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
@@ -347,7 +383,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xOrblQIgtI5/QMGuWdZ3k1jt6odkC6tsy7QikTHLcNU=
+			pCkuosKZYSm+Vb8sWh60OOB2YnfrOQw2XEWU4GGeucA=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/meditation.png</key>
@@ -396,7 +432,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			kfxzWxy1ScPJ9Z9LCVMbTMxanH2R1y0mt1AnPt6CLb8=
+			JuqI/R3wLX3mv8e6FrbrDbaOvvyr5iXv5ENAbY/zLaQ=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -567,6 +603,27 @@
 			ZepykIMSjfzhwAcmupMrkaqvXkhza1ZE3TdHjl8odaw=
 			</data>
 		</dict>
+		<key>Frameworks/audioplayers_darwin.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			AcjFga1EOT3H/LVG7NHJqWXZonYutPyzgXp6l2N5Xfo=
+			</data>
+		</dict>
+		<key>Frameworks/audioplayers_darwin.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			5oz+aMQ8TOhaVza2PYkRhmSN5Wo8Uh1BxbnZ/D7c9B4=
+			</data>
+		</dict>
+		<key>Frameworks/audioplayers_darwin.framework/audioplayers_darwin</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			2nki6/aFdt9v/bFGpvs94YDzdgbXmQBxtqNRnUpqp5U=
+			</data>
+		</dict>
 		<key>Frameworks/image_picker_ios.framework/Info.plist</key>
 		<dict>
 			<key>hash2</key>
@@ -588,6 +645,27 @@
 			ES6kNpbDWGC/lcoAXJa2r/qbD/vgQQoaHeX+Yo5OMtg=
 			</data>
 		</dict>
+		<key>Frameworks/path_provider_foundation.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			FPaU9IH5o1pZM+qLxOaz/+GlRIC/0Af61chQ1F9cLpk=
+			</data>
+		</dict>
+		<key>Frameworks/path_provider_foundation.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			aH+TgvHestHukUfAtK7saOyA21jlvG5C+ylANsgksWQ=
+			</data>
+		</dict>
+		<key>Frameworks/path_provider_foundation.framework/path_provider_foundation</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/0FcOgwRvSlJ9ninGCziTIJgGt/07mOruMfw6hT1VKk=
+			</data>
+		</dict>
 		<key>Frameworks/shared_preferences_foundation.framework/Info.plist</key>
 		<dict>
 			<key>hash2</key>
@@ -607,6 +685,27 @@
 			<key>hash2</key>
 			<data>
 			f9zaZrNlQuEmxsduw9w6VY34eE+9ge4zDv2AnJ/CMPk=
+			</data>
+		</dict>
+		<key>Frameworks/video_player_avfoundation.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			K/UXYGhMJ7M1Zz/fOo8G/RbA4fNt+ixHV0CdW4q2/5Q=
+			</data>
+		</dict>
+		<key>Frameworks/video_player_avfoundation.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			vIETPk3oMAWw0g8QqxO1NmYb4Pyn0PEuijq/22wykMw=
+			</data>
+		</dict>
+		<key>Frameworks/video_player_avfoundation.framework/video_player_avfoundation</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			s5La9kEIi6yhgDAx6Q6cwM3G4U3QQxOMxPu56Sd2NLY=
 			</data>
 		</dict>
 	</dict>
