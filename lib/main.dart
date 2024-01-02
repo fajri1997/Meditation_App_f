@@ -75,7 +75,7 @@ class MyApp extends StatelessWidget {
       name: 'tips',
       builder: (context, state) => TipsPage(),
     ),
-    GoRoute(
+    // GoRoute(
     //   path: '/exercise',
     //   name: 'exercise',
     //   builder: (context, state) => ExercisePage(),
@@ -95,7 +95,6 @@ class MyApp extends StatelessWidget {
     //   builder: (context, state) =>
     //       ExercisePage(), // Use ExercisePage as builder for both routes
     // ),
-
     GoRoute(
       path: '/music_page',
       name: 'music_page',
