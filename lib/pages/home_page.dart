@@ -68,8 +68,8 @@ class MyHomePage extends StatelessWidget {
           switch (index) {
             case 0:
               // Navigate to Home page
-              context
-                  .go('/home'); // Make sure '/home' is defined in your routes
+              context.go(
+                  '/homepage'); // Make sure '/home' is defined in your routes
               break;
             case 1:
               // Navigate to Exercise page

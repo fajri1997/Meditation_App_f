@@ -1,17 +1,16 @@
 //meditation_page.dart
 import 'dart:convert';
-
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:meditation_app/models/meditation.dart';
-import 'package:meditation_app/models/tip.dart';
 import 'package:http/http.dart' as http;
-
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:meditation_app/providrors/AuthProvider.dart';
-import 'package:meditation_app/providrors/ThemeProvider.dart';
-import 'package:provider/provider.dart';
+import 'package:meditation_app/models/meditation.dart';
+// import 'package:meditation_app/models/tip.dart';
+
+// import 'package:go_router/go_router.dart';
+// import 'package:flutter/material.dart';
+// import 'package:go_router/go_router.dart';
+// import 'package:meditation_app/providrors/AuthProvider.dart';
+// import 'package:meditation_app/providrors/ThemeProvider.dart';
+// import 'package:provider/provider.dart';
 
 class MeditationSessionsPage extends StatefulWidget {
   final int meditationId;

@@ -5,7 +5,7 @@ import 'package:meditation_app/models/user.dart';
 import 'package:meditation_app/providrors/AuthProvider.dart';
 import 'package:provider/provider.dart';
 
-import 'package:flutter/scheduler.dart';
+// import 'package:flutter/scheduler.dart';
 
 class SignInPage extends StatefulWidget {
   @override

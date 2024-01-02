@@ -4,13 +4,13 @@ import 'package:go_router/go_router.dart';
 import 'package:meditation_app/providrors/AuthProvider.dart';
 import 'package:meditation_app/providrors/ThemeProvider.dart';
 import 'package:provider/provider.dart';
-import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:http/http.dart' as http;
-import 'package:meditation_app/models/tip.dart';
-import 'package:meditation_app/providrors/AuthProvider.dart';
-import 'package:provider/provider.dart';
+// import 'dart:convert';
+// import 'package:flutter/material.dart';
+// import 'package:go_router/go_router.dart';
+// import 'package:http/http.dart' as http;
+// import 'package:meditation_app/models/tip.dart';
+// import 'package:meditation_app/providrors/AuthProvider.dart';
+// import 'package:provider/provider.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);

@@ -8,8 +8,8 @@ class MusicPage extends StatelessWidget {
 
   // Example list of tips, replace with your data source
   final List<Tip> tips = [
-    // Tip(id: 1, text: 'Music Track 1', author: 'Author 1', owner: ''),
-    // Tip(id: 2, text: 'Music Track 2', author: 'Author 2', owner: ''),
+    Tip(id: 1, text: 'Music Track 1', author: 'Author 1', owner: ''),
+    Tip(id: 2, text: 'Music Track 2', author: 'Author 2', owner: ''),
     // Add more tips...
   ];
 

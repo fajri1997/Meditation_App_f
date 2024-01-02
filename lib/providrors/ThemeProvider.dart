@@ -1,12 +1,10 @@
 //ThemeProvider.dart
-import 'dart:js';
-
 import 'package:flutter/material.dart';
-import 'package:meditation_app/models/tip.dart';
-import 'package:meditation_app/services/TodoService.dart';
-
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+// import 'package:meditation_app/models/tip.dart';
+// import 'package:meditation_app/services/TodoService.dart';
+// import 'dart:js';
+// import 'package:flutter/material.dart';
+// import 'package:provider/provider.dart';
 
 // final themeProvider = Provider.of<ThemeProvider>(context as BuildContext);
 class ThemeProvider extends ChangeNotifier {

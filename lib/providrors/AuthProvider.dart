@@ -99,7 +99,6 @@ class AuthProvider extends ChangeNotifier {
 
   // Getter for authentication token
   String? getAuthToken() {
-    // You might want to implement this method based on your needs
-    return null;
+    return token.isNotEmpty ? token : null;
   }
 }

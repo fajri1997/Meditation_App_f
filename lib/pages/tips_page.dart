@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 import 'package:meditation_app/models/tip.dart';
+import 'package:meditation_app/models/token.dart';
 import 'package:meditation_app/providrors/AuthProvider.dart';
 import 'package:provider/provider.dart';
 
@@ -15,31 +16,55 @@ class TipsPage extends StatefulWidget {
 
 class _TipsPageState extends State<TipsPage>
     with SingleTickerProviderStateMixin {
-  // Controller for the tab view
   late TabController _tabController;
-
   List<Tip> allTips = [];
   List<Tip> userTips = [];
   TextEditingController _tipTextController = TextEditingController();
-
-  // Variable to store the authenticated user's name
   String? authenticatedUserName;
 
   @override
   void initState() {
     super.initState();
-    // Retrieve the authenticated user's name
-    authenticatedUserName = context.read<AuthProvider>().getUserUsername();
-
-    // Fetch all tips and user tips when the widget is created
-    fetchAllTips();
-    fetchUserTips();
-
-    // Initialize the tab controller with 2 tabs
     _tabController = TabController(length: 2, vsync: this);
+    fetchAllTips();
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    authenticatedUserName =
+        Provider.of<AuthProvider>(context, listen: false).getUserUsername();
+    if (authenticatedUserName != null) {
+      fetchUserTips();
+    }
+  }
+// class _TipsPageState extends State<TipsPage>
+//     with SingleTickerProviderStateMixin {
+//   // Controller for the tab view
+//   late TabController _tabController;
+
+//   List<Tip> allTips = [];
+//   List<Tip> userTips = [];
+//   TextEditingController _tipTextController = TextEditingController();
+
+//   // Variable to store the authenticated user's name
+//   String? authenticatedUserName;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     // Retrieve the authenticated user's name
+//     authenticatedUserName = context.read<AuthProvider>().getUserUsername();
+
+//     // Fetch all tips and user tips when the widget is created
+//     fetchAllTips();
+//     fetchUserTips();
+
+//     // Initialize the tab controller with 2 tabs
+//     _tabController = TabController(length: 2, vsync: this);
+//   }
+
+//   @override
   void dispose() {
     // Dispose of the tab controller when the widget is disposed
     _tabController.dispose();
@@ -125,11 +150,8 @@ class _TipsPageState extends State<TipsPage>
       body: TabBarView(
         controller: _tabController,
         children: [
-          // Tab 1: All Tips
-          tipsTab(allTips),
-
-          // Tab 2: User Tips
-          tipsTab(userTips),
+          tipsTab(allTips, false), // Pass false for the "All Tips" tab
+          tipsTab(userTips, true), // Pass true for the "My Tips" tab
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -173,46 +195,71 @@ class _TipsPageState extends State<TipsPage>
     );
   }
 
-  // Function to handle tip creation
-  void _createTip(BuildContext context) {
+  void _createTip(BuildContext context) async {
     final String tipText = _tipTextController.text.trim();
 
-    // Validate the tip text
     if (tipText.isNotEmpty) {
-      // Create a new tip object with the authenticated user's name as the author
-      Tip newTip = Tip(
-        id: allTips.length +
-            1, // Assign a temporary ID (replace with actual ID from API)
-        text: tipText,
-        author: authenticatedUserName ??
-            'Unknown', // Use the authenticated user's name
-        owner: authenticatedUserName ??
-            'Unknown', // Set owner to the authenticated user's name
-      );
+      // Retrieve the token string from AuthProvider
+      String? authToken =
+          Provider.of<AuthProvider>(context, listen: false).getAuthToken();
 
-      // Add the new tip to the list
-      setState(() {
-        allTips.add(newTip);
-      });
+      if (authToken != null) {
+        // Prepare the data for the POST request
+        var data = {
+          'text': tipText,
+          'author': authenticatedUserName ?? 'Unknown',
+          // Add other fields if required by the API
+        };
 
-      // Add the new tip to the user tips list if the user is authenticated
-      if (authenticatedUserName != null) {
-        setState(() {
-          userTips.add(newTip);
-        });
+        try {
+          // Send POST request to the API
+          final response = await http.post(
+            Uri.parse('https://coded-meditation.eapi.joincoded.com/tips'),
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer $authToken', // Use the token here
+            },
+            body: json.encode(data),
+          );
+
+          if (response.statusCode == 200 || response.statusCode == 201) {
+            // Parse the response and get the actual tip data from the server
+            var responseData = json.decode(response.body);
+            Tip newTip = Tip.fromJson(responseData);
+
+            // Update the state with the new tip
+            setState(() {
+              allTips.add(newTip);
+              if (authenticatedUserName != null) {
+                userTips.add(newTip);
+              }
+            });
+
+            _tipTextController.clear(); // Clear the text field
+            Navigator.of(context).pop(); // Close the dialog
+          } else {
+            // Handle error response
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                  content: Text('Failed to create tip. Please try again.')),
+            );
+          }
+        } catch (e) {
+          // Handle exception
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Error creating tip.')),
+          );
+        }
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+              content:
+                  Text('Authentication token not available. Please log in.')),
+        );
       }
-
-      // Close the dialog
-      Navigator.of(context).pop();
-
-      // Optional: You can also submit the new tip to the API here if needed
-      // _submitTipToApi(newTip);
     } else {
-      // Show an error message if the tip text is empty
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Please enter a valid tip.'),
-        ),
+        SnackBar(content: Text('Please enter a valid tip.')),
       );
     }
   }
@@ -309,23 +356,26 @@ class _TipsPageState extends State<TipsPage>
     );
   }
 
-  // Function to build the tip tab view
-  Widget tipsTab(List<Tip> tipsList) {
+  Widget tipsTab(List<Tip> tipsList, bool isUserTipsTab) {
     return tipsList.isEmpty
-        ? Center(child: CircularProgressIndicator())
+        ? Center(child: Text('No tips available.'))
         : ListView.builder(
             itemCount: tipsList.length,
             itemBuilder: (context, index) {
+              Tip currentTip = tipsList[index];
+              // Verify if the authenticated user is the owner of the tip
+              bool isOwner = currentTip.owner == authenticatedUserName;
               return ListTile(
-                title: Text(tipsList[index].text ?? 'Default tip text'),
-                subtitle:
-                    Text('Author: ${tipsList[index].author ?? 'Unknown'}'),
-                onTap: () {
-                  if (tipsList[index].owner == authenticatedUserName) {
-                    _showDeleteConfirmationDialog(
-                        context, tipsList[index].id, tipsList);
-                  }
-                },
+                title: Text(currentTip.text ?? 'Default tip text'),
+                subtitle: Text('Author: ${currentTip.author ?? 'Unknown'}'),
+                // Show the delete button if it's the user's tip and we're in the "My Tips" tab
+                trailing: isUserTipsTab && isOwner
+                    ? IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: () => _showDeleteConfirmationDialog(
+                            context, currentTip.id, tipsList),
+                      )
+                    : null,
               );
             },
           );
