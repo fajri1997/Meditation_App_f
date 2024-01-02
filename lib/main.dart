@@ -1,15 +1,11 @@
 //main.dart
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:meditation_app/models/meditation.dart';
 import 'package:meditation_app/providrors/AuthProvider.dart';
 import 'package:meditation_app/providrors/ThemeProvider.dart';
 import 'package:meditation_app/views/signin.dart';
 import 'package:meditation_app/views/signup.dart';
 import 'package:provider/provider.dart';
-
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:meditation_app/pages/Exercise_page.dart';
 import 'package:meditation_app/pages/home_page.dart';
 import 'package:meditation_app/pages/meditation_page.dart';
@@ -17,14 +13,9 @@ import 'package:meditation_app/pages/music_page.dart';
 import 'package:meditation_app/pages/profile_page.dart';
 import 'package:meditation_app/pages/tips_page.dart';
 import 'package:meditation_app/pages/yoga_page.dart';
-import 'package:meditation_app/providrors/AuthProvider.dart';
 import 'package:meditation_app/views/splash.dart';
-import 'package:provider/provider.dart';
-// import 'package:meditation_app/views/StaticPage.dart';
-import 'package:meditation_app/views/signin.dart';
-import 'package:meditation_app/views/signup.dart';
-import 'package:meditation_app/providrors/ThemeProvider.dart';
 
+// import 'package:meditation_app/views/StaticPage.dart';
 void main() {
   runApp(
     MultiProvider(

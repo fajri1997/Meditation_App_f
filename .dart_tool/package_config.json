@@ -99,9 +99,9 @@
     },
     {
       "name": "flutter_lints",
-      "rootUri": "file:///Users/somebooodie/.pub-cache/hosted/pub.dev/flutter_lints-2.0.3",
+      "rootUri": "file:///Users/somebooodie/.pub-cache/hosted/pub.dev/flutter_lints-3.0.1",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.0"
     },
     {
       "name": "flutter_plugin_android_lifecycle",
@@ -189,7 +189,7 @@
     },
     {
       "name": "lints",
-      "rootUri": "file:///Users/somebooodie/.pub-cache/hosted/pub.dev/lints-2.1.1",
+      "rootUri": "file:///Users/somebooodie/.pub-cache/hosted/pub.dev/lints-3.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -392,7 +392,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-01-02T07:49:00.673042Z",
+  "generated": "2024-01-02T07:56:45.422985Z",
   "generator": "pub",
   "generatorVersion": "3.2.3"
 }
